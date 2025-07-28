@@ -132,4 +132,8 @@ export type SocketConfig = {
 	cachedGroupMetadata: (jid: string) => Promise<GroupMetadata | undefined>
 
 	makeSignalRepository: (auth: SignalAuthState) => SignalRepository
+	/** Socket will send a event on ping */
+	activePing?: boolean
+	/** Timeout for active ping in ms, default 5000 */
+	activePingDelay?: number
 }

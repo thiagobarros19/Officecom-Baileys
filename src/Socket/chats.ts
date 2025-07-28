@@ -52,6 +52,7 @@ import {
 } from '../WABinary'
 import { USyncQuery, USyncUser } from '../WAUSync'
 import { makeUSyncSocket } from './usync'
+import { makeHeartBeatSocket } from './heart-beat'
 const MAX_SYNC_ATTEMPTS = 2
 
 export const makeChatsSocket = (config: SocketConfig) => {
@@ -63,7 +64,8 @@ export const makeChatsSocket = (config: SocketConfig) => {
 		shouldIgnoreJid,
 		shouldSyncHistoryMessage
 	} = config
-	const sock = makeUSyncSocket(config)
+	// const sock = makeUSyncSocket(config)
+	const sock = makeHeartBeatSocket(config)
 	const { ev, ws, authState, generateMessageTag, sendNode, query, onUnexpectedError } = sock
 
 	let privacySettings: { [_: string]: string } | undefined
